@@ -1,0 +1,5 @@
+torch==2.5.0
+torchtext==0.9.1
+torchvision==0.15.2
+tqdm==4.62.3
+transformers==4.40.2
