@@ -26,6 +26,11 @@ Multimodal sentiment analysis has attracted extensive research attention as incr
 - Install [libKMCUDA](https://github.com/src-d/kmcuda) based on your cuda version
 - Others (transformers, etc.) Check requirements.txt for reference.
 
+## Dataset
+1. For the relabeled MVSA dataset, please download from [here](https://pan.baidu.com/s/14HxGf1xwUhuOmGOJAN-iDA?pwd=3yzs) and update the `train_data_dir` and `test_data_dir`.
+2. For the Twitter and TumEmo datasets, please refer to the original paper. After obtaining them, preprocess the data according to the format in the `data` and `train.json` files of the relabeled MVSA dataset.
+
+
 ## Training
 To perform a training on MVSA-Single with 600 labels, run:
 
