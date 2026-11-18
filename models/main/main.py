@@ -208,8 +208,8 @@ class S2_VER:
             y_lb = y_lb.cuda(args.gpu)
 
             img_inputs = torch.cat((x_lb, x_ulb_w, x_ulb_s0, x_ulb_s1))
-            t_lb = [i.item() for i in t_lb]
-            t_ulb = [i.item()for i in t_ulb]
+            t_lb = list(t_lb)
+            t_ulb = list(t_ulb)
             # TODO text的输入格式
             text_input = t_lb + t_ulb + t_ulb + t_ulb
             text_input = self.tokenizer(text_input, return_tensors='pt', padding=True, truncation=True)

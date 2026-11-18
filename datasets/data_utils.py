@@ -21,7 +21,13 @@ def split_ssl_data(args, img, text, img_label, text_label, label, num_labels, nu
         include_lb_to_ulb: If True, labeled data is also included in unlabeld data
     """
     # data, target = np.array(data), np.array(target)
-    img, text, img_label, text_label, label = np.array(img), np.array(text), np.array(img_label), np.array(text_label), np.array(label)
+    img, text, img_label, text_label, label = (
+    np.array(img, dtype=object),
+    np.array(text, dtype=object),
+    np.array(img_label, dtype=np.int64),
+    np.array(text_label, dtype=np.int64),
+    np.array(label, dtype=np.int64),
+)
     lb_img, lb_text, lbs, lb_idx = sample_labeled_data(args, img, text, label, num_labels, num_classes, args.dataset, index)
     ulb_idx = np.array(sorted(list(set(range(len(img))) - set(lb_idx))))  # unlabeled_data index of data
     if include_lb_to_ulb:
@@ -70,7 +76,7 @@ def sample_labeled_data(args, img, text, label,
 
     np.save(dump_path, np.array(lb_idx))
 
-    return np.array(lb_img), np.array(lb_text), np.array(lbs), np.array(lb_idx)
+    return np.array(lb_img,dtype=object), np.array(lb_text), np.array(lbs), np.array(lb_idx)
 
 
 def get_sampler_by_name(name):
